@@ -1,0 +1,63 @@
+#using "shapes.mare"
+#using "standard.mare"
+
+program:
+
+    //Draw the Sun
+
+    //Draw the grass
+    SetPenColorRGB(0, 175, 0);
+    FilledRectangle(0, 10inch, 8.5inch, 11inch);
+
+    //Draw the main house
+    SetPenColorRGB(0, 0, 0);
+    Rectangle(2inch, 5.5inch, 4inch, 4.5inch);
+
+    //Chimney
+    SetPenColorRGB(175, 0, 0);
+    FilledRectangle(5inch, 3.5inch, 1inch, 2inch);
+
+    //Roof
+    SetPenColorRGB(0, 0, 0);
+    float_t roofXs = { 1.75inch, 4inch, 6.25inch };
+    float_t roofYs = { 5.5inch, 3.5inch, 5.5inch };
+    FilledPolygon(roofXs, roofYs);
+
+    //Draw the windows
+    SetPenColorRGB(140, 200, 255);
+    FilledRectangle(2.5inch, 6inch, 1inch, 1inch);
+    FilledRectangle(4.5inch, 6inch, 1inch, 1inch);
+    FilledRectangle(4.5inch, 8inch, 1inch, 1.5inch);
+    FilledCircle(4inch, 4.5inch, 1inch);
+
+    //Draw the window panes
+    SetPenWidth(5);
+    SetPenColorRGB(255, 255, 255);
+    Line(2.5inch, 6.5inch, 3.5inch, 6.5inch);
+    Line(3inch, 6inch, 3inch, 7inch);
+    Line(5inch, 6inch, 5inch, 7inch);
+    Line(4.5inch, 6.5inch, 5.5inch, 6.5inch);
+    
+    Line(4.5inch, 8.5inch, 5.5inch, 8.5inch);
+    Line(4.5inch, 9inch, 5.5inch, 9inch);
+    Line(5inch, 8inch, 5inch, 9.5inch);
+
+    Line(3.5inch, 4.5inch, 4.5inch, 4.5inch);
+    Line(4inch, 4inch, 4inch, 5inch);
+
+    //Draw window borders
+    SetPenWidth(1);
+    SetPenColorRGB(50, 50, 50);
+    Rectangle(2.5inch, 6inch, 1inch, 1inch);
+    Rectangle(4.5inch, 6inch, 1inch, 1inch);
+    Rectangle(4.5inch, 8inch, 1inch, 1.5inch);
+    Circle(4inch, 4.5inch, 1inch);
+
+    //Draw the door
+    SetPenColorRGB(95, 65, 45);
+    FilledRectangle(3inch, 8inch, 1inch, 2inch);
+    SetPenColorRGB(255, 255, 0);
+    FilledCircle(3.75inch, 9inch, 0.125inch);
+
+    
+end program

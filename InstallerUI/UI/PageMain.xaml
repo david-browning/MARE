@@ -1,0 +1,59 @@
+﻿<ui:CommonPage x:Class="InstallerUI.Pages.PageMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="clr-namespace:InstallerUI.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="PageMain" Loaded="CommonPage_Loaded">
+
+   <Page.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="/InstallerUI;component/UI/CommonStyles.xaml" />
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+   </Page.Resources>
+
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="2*"/>
+         <RowDefinition Height="5*"/>
+         <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+         </Grid.ColumnDefinitions>
+         <TextBlock Grid.Column="0" Text="MARE Setup" Style="{StaticResource TitleTBStyle}" VerticalAlignment="Center"/>
+         <Image Grid.Column="1" VerticalAlignment="Center" Source="/InstallerUI;component/Resources/Installer.png"/>
+      </Grid>
+
+      <Grid Grid.Row="1">
+         <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+         </Grid.RowDefinitions>
+         <Button Grid.Row="0" Content="Install" Name="_installButton" Click="_installButton_Click"
+                    Style="{StaticResource InstallerBTStyleBig}"
+                Visibility="{Binding Path=IsProductInstalled, Converter={StaticResource BoolNotVisibilityConverter}}"/>
+
+         <Button Grid.Row="0" Content="Modify" Name="_modifyButton" Click="_modifyButton_Click"
+                    Style="{StaticResource InstallerBTStyleBig}"
+                Visibility="{Binding Path=IsProductInstalled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+         <Button Grid.Row="1" Content="Repair" Name="_repairButton" Click="_repairButton_Click"
+                    Style="{StaticResource InstallerBTStyleBig}"
+                Visibility="{Binding  Path=IsProductInstalled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+         <Button Grid.Row="2" Content="Remove" Name="_removeButton" Click="_removeButton_Click"
+                    Style="{StaticResource InstallerBTStyleBig}"
+            Visibility="{Binding Path=IsProductInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="#FF707070"/>
+      </Grid>
+
+   </Grid>
+</ui:CommonPage>

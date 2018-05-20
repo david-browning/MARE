@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util"
+      xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+   <Bundle Name="MARE Installer" Version="1.0.0.0" Manufacturer="David Browning"
+           UpgradeCode="aa83931a-58f3-4706-9174-1e698c189db4" IconSourceFile="$(var.SolutionDir)Common\Resources\Installer.ico">
+
+      <!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication LicenseFile="$(var.SolutionDir)Common\Resources\license.rtf"/>
+    </BootstrapperApplicationRef>-->
+
+      <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+         <Payload Name="BootstrapperCore.config" SourceFile="$(var.InstallerUI.TargetDir)\BootstrapperCore.config"/>
+         <Payload SourceFile="$(var.InstallerUI.TargetPath)"/>
+         <!--<Payload SourceFile="NetfxLicense.rtf"/>-->
+      </BootstrapperApplicationRef>
+
+      <Chain>
+         <PackageGroupRef Id="Netfx4Full"/>
+         <PackageGroupRef Id="VCRedist"/>
+         <PackageGroupRef Id="VSBuild"/>
+         <RollbackBoundary/>
+         <PackageGroupRef Id="MAREPackage"/>
+      </Chain>
+   </Bundle>
+
+   <Fragment>
+      <WixVariable Id="WixMbaPrereqPackageId" Value="NetfxFull"/>
+      <WixVariable Id="WixMbaPrereqLicenseUrl" Value="NetfxLicense.rtf"/>
+
+      <util:RegistrySearch
+                  Root="HKLM"
+                  Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
+                  Value="Version"
+                  Variable="Netfx4FullVersion" />
+      
+      <util:RegistrySearch
+          Root="HKLM"
+          Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
+          Value="Version"
+          Variable="Netfx4x64FullVersion"
+          Win64="yes" />
+
+      <util:RegistrySearch 
+         Root="HKCR" 
+         Key="Installer\Dependencies\,,amd64,14.0,bundle"
+         Value="Version"
+         Variable="VCRedistx64Key"
+         Win64="yes"/>
+
+      <util:RegistrySearch
+         Root="HKLM"
+         Key="SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
+         Value="Installed"
+         Variable="VSInstalled" 
+         Win64="yes"/>
+      
+      
+      <PackageGroup Id="VSBuild">
+         <ExePackage Id="VSBuild" Cache="no" Compressed="yes" PerMachine="yes" Permanent="yes" Vital="yes"
+                     bal:PrereqPackage="yes" Description="Microsoft Build Tools 2017" DisplayName="Build Tools 2017"
+                     SourceFile="vs_BuildTools.exe" 
+                     InstallCommand="--addProductLang en-us --add Microsoft.VisualStudio.Workload.MSBuildTools 
+                     --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --passive --norestart --wait"
+                     DetectCondition="VSInstalled"
+                     />
+      </PackageGroup>
+
+      <PackageGroup Id="Netfx4Full">
+         <ExePackage Id="Netfx4Full" Cache="no" Compressed="no" PerMachine="yes" Permanent="yes" Vital="yes"
+                     bal:PrereqPackage="yes" Description="Net 4 Installation" DisplayName="Net 4"
+                     SourceFile="dotNetFx40_Full_x86_x64.exe"  InstallCommand="/q"
+                     DownloadUrl="http://go.microsoft.com/fwlink/?LinkId=164193"
+                     DetectCondition="Netfx4FullVersion AND (NOT VersionNT64 OR Netfx4x64FullVersion)"/>
+      </PackageGroup>
+
+      <PackageGroup Id="VCRedist">
+         <ExePackage Id="VCRedistx64" Cache="no" Compressed="yes" PerMachine="yes" Vital="yes" Permanent="yes"
+                     bal:PrereqPackage="yes" Description="VC 2017 Redistributable x64" DisplayName="VC 2017 Redistributable x64"
+                     SourceFile="VC_redist.x64.exe" InstallCommand="/q"
+                     DownloadUrl="https://download.visualstudio.microsoft.com/download/pr/11100230/15ccb3f02745c7b206ad10373cbca89b/VC_redist.x64.exe"
+                     DetectCondition="VCRedistx64Key"/>
+         </PackageGroup>
+
+      <PackageGroup Id="MAREPackage">
+         <MsiPackage EnableFeatureSelection="yes" Description="MARE Install." DisplayName="MARE"
+                     SourceFile="$(var.Installer.TargetPath)"
+                     Vital="yes"/>
+      </PackageGroup>
+
+   </Fragment>
+
+
+</Wix>

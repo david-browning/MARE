@@ -1,0 +1,6 @@
+LIBRARY "$projectname$"
+
+EXPORTS
+	CustomAction1
+	AddToPath
+	RemoveFromPath

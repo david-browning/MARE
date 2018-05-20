@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define LICENSE = "$(var.SolutionDir)Common\Resources\license.rtf"?>
+  <Product Id="22FBC298-3C8D-43AD-A2D7-54826712F473" Name="MARE" Language="1033" Version="1.0.1.0" Manufacturer="David Browning"
+           UpgradeCode="66F1098C-9D7F-41A9-8892-B1B09D84A810">
+    <Package Description="Installer for MARE." Manufacturer="David Browning"
+             InstallerVersion="301" Platform="x64" Compressed="yes" InstallScope="perMachine"/>
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Icon Id="MareIcon" SourceFile="$(var.SolutionDir)Common\Resources\Installer.ico"/>
+    <Binary Id="BinaryCA" SourceFile="$(var.InstallerActions.TargetPath)"/>
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.LICENSE)"/>
+    <Property Id="ARPPRODUCTICON" Value="MareIcon" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+
+    <CustomAction Id="CASetTargetDir" Property="BinaryCAInstall" Value="[INSTALLFOLDER]"/>
+    <CustomAction Id="BinaryCAInstall" Return="check" DllEntry="AddToPath" BinaryKey="BinaryCA" Impersonate="no" Execute="commit"/>
+    <CustomAction Id="BinaryCAUninstall" Return="check" DllEntry="RemoveFromPath" BinaryKey="BinaryCA" Impersonate="no" Execute="commit"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="CASetTargetDir" Before="InstallFinalize">
+      </Custom>
+      <Custom Action="BinaryCAInstall" After="CASetTargetDir">
+        NOT Installed
+      </Custom>
+
+      <Custom Action="BinaryCAUninstall" After="RemoveFiles">
+        (NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")
+      </Custom>
+    </InstallExecuteSequence>
+
+
+    <UIRef Id="WixUI_FeatureTree"/>
+
+    <Feature Id="CommonFeatures" Title="Common Files" Level="1" Absent="disallow" Description="Required files for MARE.">
+      <ComponentRef Id="ComponentRequiredFiles"/>
+    </Feature>
+
+    <Feature Id="FeatureCompiler" Title="MARE Compiler" Level="1" Description="MARE compiler.">
+        <ComponentRef Id="ComponentCompilerEXE"/>
+        <ComponentRef Id="ComponentModules"/>
+        <ComponentRef Id="ComponentIncludes"/>
+      </Feature>
+
+      <Feature Id="FeatureDisplayProgram" Title="MARE Display" Level="1" AllowAdvertise="yes"
+               Absent="allow" Description="Program to show and print compiled MARE programs.">
+        <ComponentRef Id="ComponentDisplayEXE"/>
+        <ComponentRef Id="ComponentIcon"/>
+        <ComponentRef Id="ComponentDisplayProgramShortcut"/>
+      </Feature>
+
+      <Feature Id="FeatureSamples" Title="Sample Source Files" Level="1" AllowAdvertise="yes"
+               Absent="allow" Description="Source files showcasing some of the MARE language features.">
+        <ComponentRef Id="ComponentSamples"/>
+      </Feature>
+  </Product>
+
+  
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <!--Add a directory for the company name-->
+        <Directory Id="INSTALLFOLDER" Name="MARE">
+          <Directory Id="ModulesFolder" Name="Modules"/>
+          <Directory Id="IncludeFolder" Name="Include"/>
+          <Directory Id="SamplesFolder" Name="Samples"/>
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="MARE"/>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ComponentDisplayProgramShortcut" Guid="C8B3CB79-77D8-4D51-A528-FD1156E78022">
+        <Shortcut Id="DisplayProgramShortcut" Name="Mare Display" Description="MARE Display Program" Target="[#FileDisplayEXE]"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <RemoveFolder Id="CleanupDisplayShortcut" Directory="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\MARE Display" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="INSTALLFOLDER">
+
+       <Component Win64="yes" Id="ComponentRequiredFiles" Guid="5E4DED20-6128-471A-BFBB-21FF4D91F899" KeyPath="yes">
+          <File Id="FileMARECommmonDLL" Name="marecommon.dll" Vital="yes" Source="$(var.MareCommonWin.TargetDir)marecommon.dll"/>
+          <File Id="FileMARECommonLIB" Name="marecommon.lib" Vital="yes" Source="$(var.MareCommonWin.TargetDir)marecommon.lib"/>
+          <RemoveFolder Id="CleanupInstallFolder" Directory="INSTALLFOLDER" On="uninstall"/>
+       </Component>
+
+       <Component Win64="yes" Id="ComponentIcon"  Guid="8EE69A54-3A42-4216-B6D5-A065D59A51AF">
+        <File Id="FileIcon" Name="Icon.ico" KeyPath="yes" Vital="yes" Source="$(var.SolutionDir)Common\Resources\Display.ico"/>
+      </Component>
+
+      <Component Win64="yes" Id="ComponentCompilerEXE" Guid="B0DE00F9-872E-4A7C-AF27-4D199F765E09">
+        <File Id="FileCompilerEXE" Name="mare.exe" KeyPath="yes" Vital="yes" Source="$(var.CompilerWin.TargetPath)"/>
+      </Component>
+       
+      <Component Win64="yes" Id="ComponentDisplayEXE" Guid="4D48157F-E740-45CE-938A-183AD67CAE5C">
+        <File Id="FileDisplayEXE" Name="mared.exe" KeyPath="yes" Vital="yes" Source="$(var.MareRTWin.TargetPath)"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="ModulesFolder">
+      <Component Win64="yes" KeyPath="yes" Id="ComponentModules" Guid="4037FC33-587A-4731-884E-33096BF09C41">
+        <File Id="FileModuleShapes" Vital="yes" Name="shapes.mare" Source="$(var.SolutionDir)Common\Base\shapes.mare"/>
+        <File Id="FileModuleStandard" Vital="yes" Name="standard.mare" Source="$(var.SolutionDir)Common\Base\standard.mare"/>
+        <RemoveFolder Id="CleanupModulesFolder" Directory="ModulesFolder" On="uninstall"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="IncludeFolder">
+      <Component Win64="yes" KeyPath="yes" Id="ComponentIncludes" Guid="36CDCE1C-C2A9-4013-BDCC-285D56F38AB4">
+        <File Id="FileDLLMain" Vital="yes" Name="mare_dllmain.cpp" Source="$(var.SolutionDir)Common\Base\mare_dllmain.cpp"/>
+        <File Id="FileDLLInclude" Vital="yes" Name="mare_rt.h" Source="$(var.SolutionDir)Common\Base\mare_rt.h"/>
+        <RemoveFolder Id="CleanupIncludeFolder" Directory="IncludeFolder" On="uninstall"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="SamplesFolder">
+      <Component Win64="yes" KeyPath="yes" Id="ComponentSamples" Guid="BF98B82C-4AE9-48F4-B42E-7595214F0566">
+        <File Id="FileSunset" Vital="yes" Name="Sunsest.mare" Source="$(var.SolutionDir)Common\Resources\Samples\Sunset.mare"/>
+        <RemoveFolder Id="CleanupSamples" Directory="SamplesFolder" On="uninstall"/>
+      </Component>
+    </DirectoryRef>
+
+  </Fragment>
+</Wix>

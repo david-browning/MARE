@@ -1,0 +1,26 @@
+{
+    "name": "mare-syntax-highlighting",
+    "displayName": "MARE Syntax Highlighting",
+    "description": "Syntax highlighting for MARE.",
+    "version": "1.0.0",
+    "publisher": "DavidBrowning",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "mare",
+            "aliases": ["MARE", "mare", "Mare"],
+            "extensions": [".mare"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "mare",
+            "scopeName": "source.mare",
+            "path": "./syntaxes/mare.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,62 @@
+#using "standard.mare"
+#using "shapes.mare"
+
+float_t _X = 0;
+
+//Draw a sun at the x and y positions. 
+function null_t DrawSun(int_t x, int_t y) :
+	//Arrays are declared by assigning a set of values to the variable.
+	int_t SUN_COLOR = { 253, 94, 83 };
+
+	//Set the pen color.
+	//Pass the 3-element array to this function.
+	SetPenColor(SUN_COLOR);
+
+	//When a variable is declared as const, the compiler does not let you change its value.
+	const float_t sunRadius = 0.5inch;
+	
+	FilledCircle(x, y, sunRadius);
+end function
+
+function null_t DrawSky():
+	const float_t gradientHeight = 1cm;
+
+	//Arrays can also be declared by specifying how big the array is first.
+	//The compiler checks that the number of values in the set equals the array size.
+	float_t[3] skyColor = {110, 43, 33};
+	
+	//Position to draw a piece of sky.
+	float_t yPos = PAGE_HEIGHT;
+
+	//Draw pieces of the sky until the next piece to draw it taller than the page height.
+	until(yPos is < 0):
+		//Set the pen color. This function takes the individual r, g, and b values.
+		SetPenColorRGB(skyColor[0], skyColor[1], skyColor[2]);
+		
+		//Draw a piece of the sky.
+		FilledRectangle(0, yPos, PAGE_WIDTH, gradientHeight);
+		
+		//Update the sky color.
+		skyColor[0] = skyColor[0] + (-10 * gradientHeight / PAGE_HEIGHT);
+		skyColor[1] = skyColor[1] + (20 * gradientHeight / PAGE_HEIGHT);
+		skyColor[2] = skyColor[2] + (60 * gradientHeight / PAGE_HEIGHT);
+
+		//Update where to draw the next rectangle.
+		yPos = yPos - gradientHeight + gradientHeight / 2;
+	end until
+end function
+
+function int_t DrawMountains():
+	int_t x = 0;
+	return x;
+end function
+
+program:
+	DrawSky();
+	DrawSun(300, 300);
+	DrawMountains();
+	
+	float_t polygonX = {100, 150, 150, 100};
+	float_t polygonY = {50, 50, 100, 100};
+	Polygon(polygonX, polygonY);
+end program

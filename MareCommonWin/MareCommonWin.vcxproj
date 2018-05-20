@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\Base\mare_atom_types.cpp" />
+    <ClCompile Include="..\Common\Base\mare_compiler.cpp" />
+    <ClCompile Include="..\Common\Base\mare_compiler_functions.cpp" />
+    <ClCompile Include="..\Common\Base\mare_compiler_type_comparator.cpp" />
+    <ClCompile Include="..\Common\Base\mare_dependency_graph.cpp" />
+    <ClCompile Include="..\Common\Base\mare_dllmain.cpp" />
+    <ClCompile Include="..\Common\Base\mare_envi.cpp" />
+    <ClCompile Include="..\Common\Base\mare_expression.cpp" />
+    <ClCompile Include="..\Common\Base\mare_iatom.cpp" />
+    <ClCompile Include="..\Common\Base\mare_linker.cpp" />
+    <ClCompile Include="..\Common\Base\mare_linker_atomic_options.cpp" />
+    <ClCompile Include="..\Common\Base\mare_linker_options.cpp" />
+    <ClCompile Include="..\Common\Base\mare_literal.cpp" />
+    <ClCompile Include="..\Common\Base\mare_operator.cpp" />
+    <ClCompile Include="..\Common\Base\mare_rt.cpp" />
+    <ClCompile Include="..\Common\Base\mare_source_file.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_assignment.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_compound_decl.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_decl.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_func_call.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_func_decl.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_if.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_loop.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_loop_times.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_loop_until.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_param.cpp" />
+    <ClCompile Include="..\Common\Base\mare_stmt_ret.cpp" />
+    <ClCompile Include="..\Common\Base\mare_symbol.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\Base\mare_atom_types.h" />
+    <ClInclude Include="..\Common\Base\mare_compiler.h" />
+    <ClInclude Include="..\Common\Base\mare_compiler_consts.h" />
+    <ClInclude Include="..\Common\Base\mare_compiler_functions.h" />
+    <ClInclude Include="..\Common\Base\mare_compiler_options.h" />
+    <ClInclude Include="..\Common\Base\mare_compiler_type_comparator.h" />
+    <ClInclude Include="..\Common\Base\mare_dependency_graph.h" />
+    <ClInclude Include="..\Common\Base\mare_envi.h" />
+    <ClInclude Include="..\Common\Base\mare_exceptions.h" />
+    <ClInclude Include="..\Common\Base\mare_expression.h" />
+    <ClInclude Include="..\Common\Base\mare_iatom.h" />
+    <ClInclude Include="..\Common\Base\mare_isymbol_table.h" />
+    <ClInclude Include="..\Common\Base\mare_linker.h" />
+    <ClInclude Include="..\Common\Base\mare_linker_atomic_options.h" />
+    <ClInclude Include="..\Common\Base\mare_linker_options.h" />
+    <ClInclude Include="..\Common\Base\mare_literal.h" />
+    <ClInclude Include="..\Common\Base\mare_operator.h" />
+    <ClInclude Include="..\Common\Base\mare_rt.h" />
+    <ClInclude Include="..\Common\Base\mare_source_file.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_assignment.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_code.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_compound_decl.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_decl.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_func_call.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_func_decl.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_if.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_loop.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_loop_times.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_loop_until.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_param.h" />
+    <ClInclude Include="..\Common\Base\mare_stmt_ret.h" />
+    <ClInclude Include="..\Common\Base\mare_symbol.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Common\Base\shapes.mare">
+      <FileType>Document</FileType>
+    </Text>
+    <Text Include="..\Common\Base\standard.mare">
+      <FileType>Document</FileType>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="CustomDebugViewNatvis.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Common\Resources\Icon.ico" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{10335E05-19D8-485C-B929-609A2FF07FEE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MareCommonWin</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Environment\MyProps.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Environment\MyProps.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Environment\MyProps.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Environment\MyProps.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>marecommon</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>marecommon</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>marecommon</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>marecommon</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;MareCommonWin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>gdiplus.lib;Shlwapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(SolutionDir)Common\Base\shapes.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\standard.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\mare_rt.h" "$(OutDir)Include\"
+xcopy /y "$(SolutionDir)Common\Base\mare_dllmain.cpp" "$(OutDir)Include\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying MARE files...</Message>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>Shlwapi.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;MareCommonWin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>gdiplus.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(SolutionDir)Common\Base\shapes.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\standard.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\mare_rt.h" "$(OutDir)Include\"
+xcopy /y "$(SolutionDir)Common\Base\mare_dllmain.cpp" "$(OutDir)Include\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying MARE files...</Message>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>Shlwapi.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;MareCommonWin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>gdiplus.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(SolutionDir)Common\Base\shapes.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\standard.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\mare_rt.h" "$(OutDir)Include\"
+xcopy /y "$(SolutionDir)Common\Base\mare_dllmain.cpp" "$(OutDir)Include\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying MARE files...</Message>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>Shlwapi.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;MareCommonWin_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>gdiplus.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(SolutionDir)Common\Base\shapes.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\standard.mare" "$(OutDir)Modules\"
+xcopy /y "$(SolutionDir)Common\Base\mare_rt.h" "$(OutDir)Include\"
+xcopy /y "$(SolutionDir)Common\Base\mare_dllmain.cpp" "$(OutDir)Include\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying MARE files...</Message>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>Shlwapi.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

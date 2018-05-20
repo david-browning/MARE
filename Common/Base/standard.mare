@@ -1,0 +1,24 @@
+#module
+
+//Draw a line from (x1, y1) to (x2, y2).
+//Set the color by using SetPenColor or SetPenColorRGB.
+//Set the pen width by using SetPenWidth.
+function null_t Line(float_t x1, float_t y1, float_t x2, float_t y2):
+	__code "^Line($x1, $y1, $x2, $y2)";
+end function
+
+function null_t Arc(float_t x, float_t y, float_t radius, float_t start, float_t degree):
+	__code "^Arc($x, $y, $radius, $radius, $start, $degree)";
+end function
+
+function null_t SetPenColorRGB(int_t r, int_t g, int_t b):
+	__code "^SetPenColor($r, $g, $b)";
+end function
+
+function null_t SetPenColor(int_t[3] c):
+	SetPenColorRGB(c[0], c[1], c[2]);
+end function
+
+function null_t SetPenWidth(float_t w):
+	__code "^SetPenWidth($w)";
+end function

@@ -1,0 +1,292 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"version": "https://github.com/dotnet/csharp-tmLanguage/commit/436456ee5ce44e29cb1752c3b29f493b1de08c42",
+	"name": "MARE",
+	"scopeName": "source.mare",
+	"fileTypes": [
+		"mare"
+	],
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#declarations"
+		},
+		{
+			"include": "#preprocessor"
+		},
+		{
+			"include": "#block"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.mare",
+					"match": "(\/\/.*$)"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.mare",
+					"match": "\\+\\+|\\-\\-|\\<|\\>"
+				},
+				{
+					"name": "keyword.operator.mare",
+					"match": "\\b(and|or|not)\\b"
+				},
+				{
+					"name": "keyword.operator.binary.mare",
+					"match": "\\+|\\-|\\*|\\/|\\%|\\="
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.mare",
+					"match": "\\b(if|else|end|is|break|until|function|program|return|compound_t|__code)\\b"
+				},
+				{
+					"name": "keyword.other.mare",
+					"match": "(inch|cm)|\\b(count)\\b"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"name": "storage.modifier.mare",
+					"match": "\\b(const)\\b"
+				},
+				{
+					"name": "storage.type.mare",
+					"match": "\\b(int_t|float_t|float64_t|int64_t|char_t|null_t|compound_t)\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.mare",
+					"match": "\\b(TRUE|FALSE|PI|PAGE_WIDTH|PAGE_HEIGHT)\\b"
+				},
+				{
+					"name": "constant.numeric.mare",
+					"match": "([0-9]+\\.[0-9]+)|[0-9]+\\.[0-9]+d|([0-9]+)|((0x)|(0X)([0-9]|[A-F])+)"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#characters"
+				}
+			]
+		},
+		"preprocessor": {
+			"patterns": [
+				{
+					"begin": "^(\\#using)\\s+(\".*\")",
+					"beginCaptures": {
+						"1": {
+							"name": "meta.preprocessor.import.mare"
+						},
+						"2": {
+							"name": "string.quoted.double.mare"
+						}
+					},
+					"end": "$",
+					"endCaptures": {},
+					"name": "meta.preprocessor.mare"
+				},
+				{
+					"name": "meta.preprocessor.module.mare",
+					"match": "\\#module$"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.mare",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.mare",
+					"match": "\\\\."
+				}
+			]
+		},
+		"characters": {
+			"patterns": [
+				{
+					"name": "constant.character.mare",
+					"match": "\\'.\\'"
+				},
+				{
+					"name": "constant.character.escape.mare",
+					"match": "\\\\."
+				}
+			]
+		},
+		"block": {
+			"begin": ":",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.block.begin.mare"
+				}
+			},
+			"end": "(end)\\b(<keywords>)$",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.block.end.mare"
+				},
+				"1": {
+					"name": "keyword.control.mare"
+				},
+				"2": {
+					"name": "keyword.control.mare"
+				}
+			},
+			"name": "meta.block.mare",
+			"patterns": [
+				
+				{
+					"include": "#statements"
+				}
+			]
+		},
+		"declarations": {
+			"patterns": [
+				{
+					"begin": "\\b(const)?\\b(<types>)\\b(<symbols>)",
+					"beginCaptures": {
+						"1": {
+							"name": "storage.modifier.mare"
+						}
+					},
+					"end": "<terminators>",
+					"name": "entity.name.variable.mare"
+				},
+				{
+					"begin": "\\b(function)\\b(<types>)\\b(<symbols>)\\s*(\\(\\.*\\)):",
+					"beginCaptures": {
+					},
+					"end": "\\b(end)\\b(function)",
+					"name":"entity.name.function.mare"
+				},
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#types"
+				},
+				{
+					"include": "#expressions"
+				},
+				{
+					"include": "#terminators"
+				}
+			]
+		},
+		"statements": {
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#declarations"
+				},
+				{
+					"include": "#function-calls"
+				},
+				{
+					"include": "#assign-statements"
+				},
+				{
+					"include": "#return-statements"
+				}
+			]
+		},
+		"function-calls": {
+			"patterns": [
+				{
+					"match": "(<symbols>)(\\()(\\.*)\\)"
+				},
+				{
+					"include": "#expressions"
+				},
+				{
+					"include": "#symbols"
+				}
+			]
+		},
+		"assign-statements": {
+			"patterns": [
+				{
+					"match": "\\b(<symbol>)\\s*\\=\\s*(<expressions>)\\s*(<terminators>)",
+					"name": "statement.assign.mare"
+				}
+			]
+		},
+		"return-statements": {
+			"patterns": [
+				{
+					"match": "\\b(return)\\s+(<expressions>)\\s*(<terminators>)",
+					"name": "statement.return.mare"
+				}
+			]
+		},
+		"expressions": {
+			"patterns": [
+				{
+					"include": "#constants"
+				},
+				{
+					"include": "#operators"
+				},
+				{
+					"include": "#symbols"
+				}
+			]
+		},
+		"array-initializer": {
+			"patterns": [
+				{
+					"match": "\\{\\s*(<expressions>\\s*,\\s*)*(<expression>)\\s*\\}",
+					"name": "initializer.array.mare"
+				}
+			]
+		},
+		"symbols": {
+			"patterns": [
+				{
+					"match": "([A-Za-z_][A-Za-z0-9_]*)\\s*(\\()",
+					"captures": {
+						"1": {
+							"name":"entity.name.function.mare"
+						},
+						"2": {
+							"name":"keyword.operator.mare"
+						}
+					}
+				},
+				{
+					"match": "([_A-Za-z][A-Za-z0-9_]*)",
+					"name":"variable.name.mare"
+				}
+			]
+		},
+		"terminators": {
+			"patterns": [
+				{
+					"match": "\\;",
+					"name": "punctuation.terminator.statement.mare"
+				}
+			]
+		}
+	}
+}
