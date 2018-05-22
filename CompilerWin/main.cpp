@@ -53,6 +53,9 @@ static const char METRICS_OPTION_SHORT = 'M';
 static const std::string SAVE_COMPILER_FILES_OPTION_LONG = "nocleanup";
 static const char SAVE_COMPILER_FILES_OPTION_SHORT = 'C';
 
+static const std::string VERIFY_COMPILER_OPTION_LONG = "verify";
+static const char VERIFY_COMPILER_OPTION_SHORT = 'X';
+
 void PrintHelp()
 {
 	std::cout << "Usage: mare [options] -" << OUTPUT_OPTION_SHORT << "<file> | --" << OUTPUT_OPTION_LONG << " <file> file..." <<
@@ -66,6 +69,7 @@ void PrintHelp()
 	std::cout << "--" << VERSION_OPTION_LONG << std::endl;
 	std::cout << "--" << METRICS_OPTION_LONG << std::endl;
 	std::cout << "--" << SAVE_COMPILER_FILES_OPTION_LONG << std::endl;
+   std::cout << "--" << VERIFY_COMPILER_OPTION_LONG << std::endl;
 
 	std::cout << std::endl;
 }

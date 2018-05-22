@@ -57,11 +57,16 @@ class EXPORT_FUNC MareRT
 
 	void Rectangle(float x, float y, float w, float h);
 	
-	void Ellipse(float x, float y, float w, float h);
+   //Draws an ellipse where the center is (x, y). The ellipse is w pixels wide, and h
+   //pixels tall. W and H refer to width and height diameters. They are not radiuses. 
+   //The ellipse outline color is set by calling SetPenColor before calling this.
+	void Ellipse(float x, float y, float w, float h); 
 
 	void Polygon(const float* xPositions, const float* yPositions, size_t vertCount);
 
-	//Draws an ellipse and fills it in with the current pen color
+   //Draws an ellipse where the center is (x, y). The ellipse is w pixels wide, and h
+   //pixels tall. W and H refer to width and height diameters. They are not radiuses. 
+   //The ellipse color is set by calling SetPenColor before calling this.
 	void FilledEllipse(float x, float y, float w, float h);
 
 	//Draws a rectangle and fills it in with the current pen color.
@@ -75,6 +80,7 @@ class EXPORT_FUNC MareRT
 
 	float GetPageWtoHRatio();
 
+   //Copy constructor.
 	MareRT operator=(const MareRT& r);
 
 	private:

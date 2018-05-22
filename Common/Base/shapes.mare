@@ -14,12 +14,11 @@ function null_t Ellipse(float_t x, float_t y, float_t w, float_t h):
 end function
 
 function null_t Circle(float_t x, float_t y, float_t r):
-	Ellipse(x, y, r, r);
+	Ellipse(x, y, r * 2, r * 2);
 end function
 
 function null_t Polygon(float_t[] xPositions, float_t[] yPositions ):
 	int_t vertCount = count xPositions;
-
 	__code "float* xFirst_p = &$xPositions[0]";
 	__code "float* yFirst_p = &$yPositions[0]";
 	__code "^Polygon(xFirst_p, yFirst_p, $vertCount)";
@@ -38,7 +37,7 @@ function null_t FilledEllipse(float_t x, float_t y, float_t w, float_t h):
 end function
 
 function null_t FilledCircle(float_t x, float_t y, float_t r):
-	FilledEllipse(x, y, r, r);
+	FilledEllipse(x, y, r * 2, r * 2);
 end function
 
 function null_t FilledPolygon(float_t[] xPositions, float_t[] yPositions ):
