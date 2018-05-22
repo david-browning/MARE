@@ -28,7 +28,7 @@ program:
     FilledRectangle(2.5inch, 6inch, 1inch, 1inch);
     FilledRectangle(4.5inch, 6inch, 1inch, 1inch);
     FilledRectangle(4.5inch, 8inch, 1inch, 1.5inch);
-    FilledCircle(4inch, 4.5inch, 1inch);
+    FilledCircle(4inch, 4.5inch, 0.5inch);
 
     //Draw the window panes
     SetPenWidth(5);
@@ -51,7 +51,7 @@ program:
     Rectangle(2.5inch, 6inch, 1inch, 1inch);
     Rectangle(4.5inch, 6inch, 1inch, 1inch);
     Rectangle(4.5inch, 8inch, 1inch, 1.5inch);
-    Circle(4inch, 4.5inch, 1inch);
+    Circle(4inch, 4.5inch, 0.5inch);
 
     //Draw the door
     SetPenColorRGB(95, 65, 45);
