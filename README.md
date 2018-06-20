@@ -1,4 +1,4 @@
-# MARE programming language
+ # MARE programming language
 
 ## Introduction:
 The Math and Art Runtime Environment (MARE) is a programming language + interpreter for drawing. This platform seeks to bridge the gap between visual programming languages such as Scratch, with traditional languages like C and Python. It is an educational tool focusing on STEAM projects. The language invites discussions about software engineering and geometry, but allows uninhibited creativity. 
@@ -9,7 +9,7 @@ The MARE compiler and runtime program have only been tested on Windows 10. The p
 MARE requires the Visual C++ compiler with the Windows SDK.
 
 ## Installation:
-Download [MARE Setup.exe](InstallerBootstrapper/bin/Release/) and run it. Select "Install".
+Download MARE Setup.exe and run it. Select "Install".
 The installer will download and install Visual Studio 2017 Build Tools if you do not have the Visual C++ compilers installed. This can take up to 1 hour depending on your internet speed.
 
 ## Enterprise Installation:
