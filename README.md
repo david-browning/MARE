@@ -1,4 +1,4 @@
- # MARE programming language
+ # MARE programming language - ARCHIVED
 
 ## Introduction:
 The Math and Art Runtime Environment (MARE) is a programming language + interpreter for drawing. This platform seeks to bridge the gap between visual programming languages such as Scratch, with traditional languages like C and Python. It is an educational tool focusing on STEAM projects. The language invites discussions about software engineering and geometry, but allows uninhibited creativity. 
